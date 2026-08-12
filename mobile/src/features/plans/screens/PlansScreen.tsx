@@ -1068,6 +1068,10 @@ const styles = StyleSheet.create({
   },
 
   sheetContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
     backgroundColor: Theme.colors.card,
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
@@ -1126,7 +1130,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1.5,
-    borderColor: 'rgba(255,205,110,0.35)',
+    borderColor: Theme.colors.glassBorder,
+    backgroundColor: '#FFF9EF',
     borderRadius: 14,
     padding: 14,
     marginBottom: 12,
@@ -1134,11 +1139,11 @@ const styles = StyleSheet.create({
 
   optionRowSelected: {
     borderColor: Theme.colors.primary,
-    backgroundColor: 'rgba(166,54,6,0.08)',
+    backgroundColor: '#FBE7D8',
   },
 
   optionRowDisabled: {
-    opacity: 0.45,
+    opacity: 0.8,
   },
 
   radioOuter: {
@@ -1174,7 +1179,7 @@ const styles = StyleSheet.create({
   },
 
   optionSubLabel: {
-    color: Theme.colors.grey,
+    color: Theme.colors.onLightGrey,
     fontSize: 12,
     marginTop: 2,
   },
