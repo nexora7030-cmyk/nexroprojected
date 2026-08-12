@@ -32,6 +32,7 @@ import {
 import PressableScale from '../../../shared/components/animations/PressableScale';
 import GlassCard from '../../../shared/components/Card/GlassCard';
 import SupportSheet from '../../../shared/components/SupportSheet';
+import AppConstants from '../../../shared/constants/app';
 
 const ProfileScreen = () => {
   const navigation = useNavigation<any>();
@@ -532,6 +533,10 @@ const handleLogout = () => {
         onClose={() => setIsSupportOpen(false)}
       />
 
+      <Text style={styles.versionText}>
+        {AppConstants.APP_NAME} v{AppConstants.APP_VERSION}
+      </Text>
+
       <View style={styles.bottomSpace} />
     </ScrollView>
   );
@@ -764,6 +769,13 @@ logoutButton: {
     color: '#DC2626',
     textAlign: 'center',
     marginTop: 14,
+  },
+
+  versionText: {
+    color: Theme.colors.onLightGrey,
+    fontSize: 12,
+    textAlign: 'center',
+    marginTop: 24,
   },
 
   bottomSpace: {
