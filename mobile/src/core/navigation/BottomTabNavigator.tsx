@@ -111,7 +111,7 @@ const CustomTabBar = ({
               <Ionicons
                 name={getIconName(route.name, isFocused)}
                 size={isFocused ? 23 : 22}
-                color={isFocused ? '#FFFFFF' : Theme.colors.grey}
+                color={isFocused ? '#FFFFFF' : '#5A4632'}
               />
 
               <Text
@@ -223,9 +223,9 @@ const styles = StyleSheet.create({
 
   tabLabel: {
     marginTop: 3,
-    fontSize: 11,
-    fontWeight: '600',
-    color: Theme.colors.grey,
+    fontSize: 12,
+    fontWeight: '700',
+    color: Theme.colors.text,
   },
 
   activeTabLabel: {
