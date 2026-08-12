@@ -1,0 +1,66 @@
+import React, {useRef} from 'react';
+import {
+  Animated,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
+
+import Theme from '../../../core/theme/theme';
+
+interface Props {
+  title: string;
+  onPress: () => void;
+}
+
+const CustomButton = ({title, onPress}: Props) => {
+  const scale = useRef(new Animated.Value(1)).current;
+
+  const animateTo = (value: number) => {
+    Animated.spring(scale, {
+      toValue: value,
+      friction: 7,
+      tension: 160,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  return (
+    <TouchableOpacity
+      activeOpacity={0.92}
+      onPress={onPress}
+      onPressIn={() => animateTo(0.96)}
+      onPressOut={() => animateTo(1)}>
+      <Animated.View
+        style={[styles.button, {transform: [{scale}]}]}>
+        <Text style={styles.text}>{title}</Text>
+      </Animated.View>
+    </TouchableOpacity>
+  );
+};
+
+export default CustomButton;
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: Theme.colors.primary,
+    height: 52,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.45)',
+    shadowColor: '#4A1803',
+    shadowOffset: {width: 0, height: 8},
+    shadowOpacity: 0.4,
+    shadowRadius: 14,
+    elevation: 9,
+  },
+
+  text: {
+    color: Theme.colors.onPrimary,
+    fontWeight: 'bold',
+    fontSize: 16,
+    letterSpacing: 0.5,
+  },
+});

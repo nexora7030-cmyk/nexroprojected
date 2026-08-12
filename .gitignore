@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Build outputs & artifacts
+*.apk
+*.aab
+*.log
+build/
+dist/
+.expo/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Android / Gradle
+local.properties
+mobile/android/.gradle/
+mobile/android/app/build/
+mobile/android/build/
+.gradle/
+
+# iOS
+mobile/ios/build/
+mobile/ios/Pods/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Backend runtime data
+backend/uploads/
+backend/logs/
