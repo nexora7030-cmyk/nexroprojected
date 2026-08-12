@@ -7,12 +7,36 @@ const createAdmin = require("./utils/createAdmin");
 const PORT = process.env.PORT || 5000;
 const startMaturityScheduler =
   require("./jobs/maturityScheduler");
+const { processMaturedSubscriptions } = require("./services/maturityService");
 
 connectDatabase()
   .then(async () => {
     console.log("MongoDB connected");
 
     await createAdmin();
+
+    /*
+     * Catch-up: process any subscriptions that matured while the
+     * server was asleep/stopped, so no returns are missed.
+     */
+    try {
+      console.log(
+        "[Maturity Catch-Up] Started",
+      );
+
+      const catchUpResult =
+        await processMaturedSubscriptions();
+
+      console.log(
+        "[Maturity Catch-Up] Completed:",
+        catchUpResult,
+      );
+    } catch (catchUpError) {
+      console.error(
+        "[Maturity Catch-Up] Error:",
+        catchUpError.message,
+      );
+    }
 
     startMaturityScheduler();
 
